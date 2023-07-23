@@ -1,0 +1,31 @@
+<section id="header" class="container mt-3 jumbotron text-center">
+  <h1 class="display-3">Library</h1>
+  <p class="lead">This place is often filled with books and other resources, providing a quiet and peaceful
+    environment for study, research, and reading</p>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <!-- Search input and "Add a new book" button -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by title" ngModel
+        (ngModelChange)="searchTitle($event)" />
+      <button class=" btn btn-primary ml-2" routerLink="add">Add a new book</button>
+    </div>
+    <!-- ist of books in cards -->
+    <div class="row">
+      <div *ngFor="let Book of Books; let i = index" class="col-lg-4 mb-4">
+        <div class="card">
+          <img src="../../assets/{{Book.image}}" alt="" class="card-img-top photo">
+          <div class="card-body">
+            <h5 class="card-title">{{Book.title}}</h5>
+            <p class="card-text">{{Book.author}}</p>
+            <!-- to update and delete the book -->
+            <a class="btn btn-outline-success btn-sm m-2" routerLink="update/{{Book.id}}">update</a>
+            <a class="btn btn-outline-danger btn-sm m-2" (click)="delete(Book)">delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
